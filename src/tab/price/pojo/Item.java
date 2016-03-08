@@ -2,7 +2,7 @@ package tab.price.pojo;
 
 public class Item {
 	private String id;
-	private String quntity;
+	private long quantity;
 
 	public String getId() {
 		return id;
@@ -12,12 +12,12 @@ public class Item {
 		this.id = id;
 	}
 
-	public String getQuntity() {
-		return quntity;
+	public long getQuantity() {
+		return quantity;
 	}
 
-	public void setQuntity(String quntity) {
-		this.quntity = quntity;
+	public void setQuantity(long quantity) {
+		this.quantity = quantity;
 	}
 
 }
