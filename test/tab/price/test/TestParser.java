@@ -49,7 +49,7 @@ public class TestParser {
 		Item item = parser.parseItem(input);
 
 		Assert.assertNotNull(item);
-		Assert.assertEquals(input, item.getId());
+		Assert.assertEquals(input, item.getProductId());
 		Assert.assertEquals(qty, item.getQuantity());
 	}
 
@@ -66,7 +66,7 @@ public class TestParser {
 		Item item = parser.parseItem(input);
 
 		Assert.assertNotNull(item);
-		Assert.assertEquals(id, item.getId());
+		Assert.assertEquals(id, item.getProductId());
 		Assert.assertEquals(qty, item.getQuantity());
 	}
 
@@ -82,7 +82,7 @@ public class TestParser {
 		Item item = parser.parseItem(input);
 
 		Assert.assertNotNull(item);
-		Assert.assertEquals(input, item.getId());
+		Assert.assertEquals(input, item.getProductId());
 		Assert.assertEquals(qty, item.getQuantity());
 	}
 
@@ -96,7 +96,7 @@ public class TestParser {
 
 		Order order = new Order();
 		Item item = new Item();
-		item.setId(id);
+		item.setProductId(id);
 		item.setQuantity(1);
 		Assert.assertNull(order.getItems());
 
@@ -105,37 +105,37 @@ public class TestParser {
 		parser.addItemToOrder(order, item);
 
 		Assert.assertNotNull(order.getItems());
-		Assert.assertEquals(id, order.getItems().get(id).getId());
+		Assert.assertEquals(id, order.getItems().get(id).getProductId());
 		Assert.assertEquals(1, order.getItems().get(id).getQuantity());
 
 		// add 2nd
 		item = new Item();
-		item.setId(id);
+		item.setProductId(id);
 		item.setQuantity(1);
 		parser.addItemToOrder(order, item);
 		Assert.assertNotNull(order.getItems());
-		Assert.assertEquals(id, order.getItems().get(id).getId());
+		Assert.assertEquals(id, order.getItems().get(id).getProductId());
 		Assert.assertEquals(2, order.getItems().get(id).getQuantity());
 
 		// add 3 more
 		item = new Item();
-		item.setId(id);
+		item.setProductId(id);
 		item.setQuantity(3);
 		parser.addItemToOrder(order, item);
 		Assert.assertNotNull(order.getItems());
-		Assert.assertEquals(id, order.getItems().get(id).getId());
+		Assert.assertEquals(id, order.getItems().get(id).getProductId());
 		Assert.assertEquals(5, order.getItems().get(id).getQuantity());
 
 		// add another
 		item = new Item();
 		String otherId = "ITEM000002";
-		item.setId(otherId);
+		item.setProductId(otherId);
 		item.setQuantity(2);
 		parser.addItemToOrder(order, item);
 		Assert.assertNotNull(order.getItems());
-		Assert.assertEquals(id, order.getItems().get(id).getId());
+		Assert.assertEquals(id, order.getItems().get(id).getProductId());
 		Assert.assertEquals(5, order.getItems().get(id).getQuantity());
-		Assert.assertEquals(otherId, order.getItems().get(otherId).getId());
+		Assert.assertEquals(otherId, order.getItems().get(otherId).getProductId());
 		Assert.assertEquals(2, order.getItems().get(otherId).getQuantity());
 		Assert.assertEquals(2, order.getItems().size());
 	}
