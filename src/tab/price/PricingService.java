@@ -2,6 +2,7 @@ package tab.price;
 
 import tab.price.format.OutputFormatter;
 import tab.price.parse.InputParser;
+import tab.price.pojo.Order;
 
 /**
  * It¡¯s a service that takes JSON text as input and returns detail price as out
@@ -20,6 +21,10 @@ public class PricingService {
 	 * formatter.
 	 */
 	private OutputFormatter outputFormatter;
+	/**
+	 * pricing engine.
+	 */
+	private PricingEngine pricingEngine;
 
 	/**
 	 * Price products
@@ -29,7 +34,15 @@ public class PricingService {
 	 * @return Price detail
 	 */
 	public String price(String input) {
-		return null;
+
+		// parse input.
+		Order order = getInputParser().parse(input);
+
+		// invoke pricing engine.
+		getPricingEngine().price(order);
+
+		// formate output
+		return getOutputFormatter().format(order);
 	}
 
 	public InputParser getInputParser() {
@@ -46,6 +59,14 @@ public class PricingService {
 
 	public void setOutputFormatter(OutputFormatter outputFormatter) {
 		this.outputFormatter = outputFormatter;
+	}
+
+	public PricingEngine getPricingEngine() {
+		return pricingEngine;
+	}
+
+	public void setPricingEngine(PricingEngine pricingEngine) {
+		this.pricingEngine = pricingEngine;
 	}
 
 }

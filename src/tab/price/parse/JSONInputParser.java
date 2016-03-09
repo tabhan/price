@@ -56,15 +56,15 @@ public class JSONInputParser implements InputParser {
 		if (idx >= 0) {
 
 			try {
-				item.setId(inputItem.substring(0, idx));
+				item.setProductId(inputItem.substring(0, idx));
 				String strQty = inputItem.substring(idx + getQuntitySeperator().length());
 				item.setQuantity(Long.parseLong(strQty));
 			} catch (NumberFormatException e) {
-				item.setId(inputItem);
+				item.setProductId(inputItem);
 				item.setQuantity(1);
 			}
 		} else {
-			item.setId(inputItem);
+			item.setProductId(inputItem);
 			item.setQuantity(1);
 		}
 
@@ -91,11 +91,11 @@ public class JSONInputParser implements InputParser {
 			order.setItems(new LinkedHashMap<>());
 		}
 		
-		if (order.getItems().containsKey(item.getId())) {
-			Item oriItem = order.getItems().get(item.getId());
+		if (order.getItems().containsKey(item.getProductId())) {
+			Item oriItem = order.getItems().get(item.getProductId());
 			oriItem.setQuantity(oriItem.getQuantity() + item.getQuantity());
 		} else {
-			order.getItems().put(item.getId(), item);
+			order.getItems().put(item.getProductId(), item);
 		}
 	}
 

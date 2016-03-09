@@ -1,16 +1,9 @@
 package tab.price.pojo;
 
-public class Item {
-	private String id;
+public class Item extends Product {
 	private long quantity;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	private double amount;
+	private DiscountInfo discountInfo;
 
 	public long getQuantity() {
 		return quantity;
@@ -18,6 +11,22 @@ public class Item {
 
 	public void setQuantity(long quantity) {
 		this.quantity = quantity;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public DiscountInfo getDiscountInfo() {
+		return discountInfo;
+	}
+
+	public void setDiscountInfo(DiscountInfo discountInfo) {
+		this.discountInfo = discountInfo;
 	}
 
 }
