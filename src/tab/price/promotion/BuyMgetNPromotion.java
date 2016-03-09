@@ -2,31 +2,25 @@ package tab.price.promotion;
 
 import tab.price.pojo.DiscountInfo;
 import tab.price.pojo.Item;
-import tab.price.pojo.Order;
 
 public class BuyMgetNPromotion extends ItemPromotion {
 	private long m = Long.MAX_VALUE;
 	private long n = 0;
 
 	@Override
-	public boolean qualified(Order order) {
-		return super.qualified(order) && order.getItems().get(getProductId()).getQuantity() > getM();
-	}
-
-	@Override
-	public void discount(Order order) {
+	public void discount(Item item) {
 		// apply discount
-		Item item = order.getItems().get(getProductId());
-		double perUnitPrice = item.getPerUnitPrice();
-		double perUnitDiscount = perUnitPrice;
+		if (item.getQuantity() > getM()) {
+			double perUnitPrice = item.getPerUnitPrice();
+			double perUnitDiscount = perUnitPrice;
 
-		long discountQuantity = calculateDiscountQuantity(item.getQuantity());
+			long discountQuantity = calculateDiscountQuantity(item.getQuantity());
 
-		DiscountInfo discountInfo = createDiscountInfo();
-		discountInfo.setQuantiy(discountQuantity);
-		discountInfo.setPerUnitDiscount(perUnitDiscount);
-		item.setDiscountInfo(discountInfo);
-
+			DiscountInfo discountInfo = createDiscountInfo();
+			discountInfo.setQuantiy(discountQuantity);
+			discountInfo.setPerUnitDiscount(perUnitDiscount);
+			item.setDiscountInfo(discountInfo);
+		}
 	}
 
 	public long calculateDiscountQuantity(long itemQuantity) {

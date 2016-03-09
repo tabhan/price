@@ -33,8 +33,8 @@ public class TestDataManager {
 	@Test
 	public void testQueryPromotions() {
 
-		String[] ids = { "p1", "p2" };
-		int[] priorities = { 2, 1 };
+		String[] ids = { "p2", "p1" };
+		int[] priorities = { 1, 2 };
 
 		List<Promotion> promotions = manager.getAllPromotions();
 

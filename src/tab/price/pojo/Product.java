@@ -1,5 +1,11 @@
 package tab.price.pojo;
 
+/**
+ * Product info.
+ * 
+ * @author Tab
+ *
+ */
 public class Product {
 	/**
 	 * Code of product.
@@ -13,6 +19,10 @@ public class Product {
 	 * Name.
 	 */
 	private String name;
+	/**
+	 * Unit name.
+	 */
+	private String unit;
 
 	public String getProductId() {
 		return productId;
@@ -36,6 +46,14 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 }

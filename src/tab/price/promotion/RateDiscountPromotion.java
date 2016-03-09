@@ -2,7 +2,6 @@ package tab.price.promotion;
 
 import tab.price.pojo.DiscountInfo;
 import tab.price.pojo.Item;
-import tab.price.pojo.Order;
 
 public class RateDiscountPromotion extends ItemPromotion {
 	private double discountRate = 0;
@@ -16,9 +15,8 @@ public class RateDiscountPromotion extends ItemPromotion {
 	}
 
 	@Override
-	public void discount(Order order) {
+	public void discount(Item item) {
 		// apply discount
-		Item item = order.getItems().get(getProductId());
 		double perUnitPrice = item.getPerUnitPrice();
 
 		double perUnitDiscount = 0;

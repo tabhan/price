@@ -1,26 +1,34 @@
 package tab.price.promotion;
 
+import java.util.Set;
+
 import tab.price.pojo.Item;
 import tab.price.pojo.Order;
 
 public abstract class ItemPromotion extends Promotion {
-	private String productId;
+	private Set<String> productIds;
 
-	public boolean qualified(Order order) {
-		if (order == null) {
-			return false;
+	@Override
+	public void applyPromotion(Order order) {
+		Item item = null;
+		if (getProductIds() != null) {
+			for (String productId : getProductIds()) {
+				item = order.getItems().get(productId);
+				if (item != null && item.getDiscountInfo() == null) {
+					discount(item);
+				}
+			}
 		}
-
-		Item item = order.getItems().get(productId);
-		return item != null && item.getDiscountInfo() == null;
 	}
 
-	public String getProductId() {
-		return productId;
+	public abstract void discount(Item item);
+
+	public Set<String> getProductIds() {
+		return productIds;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setProductIds(Set<String> productIds) {
+		this.productIds = productIds;
 	}
 
 }

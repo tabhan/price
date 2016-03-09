@@ -1,5 +1,16 @@
 [{
 	productId:'ITEM000001',
-	name:'\u53ef\u53e3\u53ef\u4e50',
+	name:'可口可乐',
+	unit:'瓶',
 	perUnitPrice:3.00
+},{
+	productId:'ITEM000003',
+	name:'羽毛球',
+	unit:'个',
+	perUnitPrice:1.00
+},{
+	productId:'ITEM000005',
+	name:'苹果',
+	unit:'斤',
+	perUnitPrice:5.5
 }]

@@ -6,21 +6,9 @@ import tab.price.pojo.Order;
 public abstract class Promotion {
 	private String id;
 	private int priority = 0;
+	private String name;
 
-	public void applyPromotion(Order order) {
-
-		// this promotion is qualified.
-		if (qualified(order)) {
-
-			// apply discount
-			discount(order);
-		}
-
-	}
-
-	public abstract boolean qualified(Order order);
-
-	public abstract void discount(Order order);
+	public abstract void applyPromotion(Order order);
 
 	protected DiscountInfo createDiscountInfo() {
 		DiscountInfo discountInfo = new DiscountInfo();
@@ -42,6 +30,14 @@ public abstract class Promotion {
 
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

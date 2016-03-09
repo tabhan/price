@@ -1,6 +1,7 @@
 package tab.price.test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +19,11 @@ public class TestRateDicountPromotion {
 
 		String productId = "ITEM000001";
 
-		promotion.setProductId(productId);
+		promotion.setProductIds(new HashSet<String>() {
+			{
+				this.add(productId);
+			}
+		});
 		promotion.setDiscountRate(0.5);
 
 		Order order = new Order();

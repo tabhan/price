@@ -1,8 +1,17 @@
 package tab.price.pojo;
 
 public class Item extends Product {
+	/**
+	 * Item quantity.
+	 */
 	private long quantity;
+	/**
+	 * Total amount of this product.(Per-unit, quantity, discount).
+	 */
 	private double amount;
+	/**
+	 * Discount detail info.
+	 */
 	private DiscountInfo discountInfo;
 
 	public long getQuantity() {

@@ -48,6 +48,7 @@ public class PricingEngine {
 	public void claculateItemAmount(Order order) {
 
 		double orderAmount = 0;
+		double itemDiscount = 0;
 		for (Item item : order.getItems().values()) {
 
 			// sum of per-unit price
@@ -57,6 +58,7 @@ public class PricingEngine {
 				DiscountInfo discountInfo = item.getDiscountInfo();
 
 				double discountAmount = discountInfo.getPerUnitDiscount() * discountInfo.getQuantiy();
+				itemDiscount += discountAmount;
 				item.setAmount(item.getAmount() - discountAmount);
 			}
 
@@ -64,7 +66,7 @@ public class PricingEngine {
 		}
 
 		order.setAmount(orderAmount);
-
+		order.setItemDiscount(itemDiscount);
 	}
 
 	/**
@@ -93,6 +95,7 @@ public class PricingEngine {
 		if (product != null) {
 			item.setPerUnitPrice(product.getPerUnitPrice());
 			item.setName(product.getName());
+			item.setUnit(product.getUnit());
 		}
 	}
 

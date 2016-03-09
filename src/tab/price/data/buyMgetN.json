@@ -1,7 +1,8 @@
 [{
-	id:"p2",
+	id:'p2',
+	name:'买二赠一',
 	priority:1,
-	productId:"ITEM000001",
+	productIds:["ITEM000001","ITEM000003"],
 	m:2,
 	n:1
 }]

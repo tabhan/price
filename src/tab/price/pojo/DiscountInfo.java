@@ -2,9 +2,24 @@ package tab.price.pojo;
 
 import tab.price.promotion.Promotion;
 
+/**
+ * Discount info of item.
+ * 
+ * @author Tab
+ *
+ */
 public class DiscountInfo {
+	/**
+	 * Discount amount for one unit of this item.
+	 */
 	private double perUnitDiscount;
+	/**
+	 * How many products applied discount.
+	 */
 	private long quantiy;
+	/**
+	 * Psromotion.
+	 */
 	private Promotion promotion;
 
 	public double getPerUnitDiscount() {
