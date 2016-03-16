@@ -1,8 +1,6 @@
 package tab.price.test;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -20,11 +18,9 @@ import tab.price.promotion.Promotion;
 public class TestPriceEngine {
 
 	private static PricingEngine pricingEngine;
-	private static InputParser inputParser;
 
 	@BeforeClass
 	public static void init() {
-		inputParser = new JSONInputParser();
 		pricingEngine = new PricingEngine();
 		pricingEngine.setDataManager(new SimpleDataManager());
 	}
@@ -65,8 +61,6 @@ public class TestPriceEngine {
 	@Test
 	public void testPrice() {
 		String key1 = "ITEM000001";
-		String key3 = "ITEM000003";
-		String key5 = "ITEM000005";
 		String input = "['ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000001','ITEM000003-2','ITEM000005','ITEM000005','ITEM000005']";
 		InputParser parser = new JSONInputParser();
 		Order order = parser.parse(input);

@@ -17,13 +17,10 @@ public class TestRateDicountPromotion {
 	@Test
 	public void testApplyPromotion() {
 
-		String productId = "ITEM000001";
+		final String productId = "ITEM000001";
 
-		promotion.setProductIds(new HashSet<String>() {
-			{
-				this.add(productId);
-			}
-		});
+		promotion.setProductIds(new HashSet<>());
+		promotion.getProductIds().add(productId);
 		promotion.setDiscountRate(0.5);
 
 		Order order = new Order();

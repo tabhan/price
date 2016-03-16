@@ -1,35 +1,22 @@
 package tab.price;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
-import tab.price.data.SimpleDataManager;
-import tab.price.format.DefaultOutputFormatter;
-import tab.price.parse.JSONInputParser;
+import org.springframework.context.support.GenericGroovyApplicationContext;
 
 public class Pricing {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 
-		PricingService pricingService = new PricingService();
-		pricingService.setInputParser(new JSONInputParser());
-		pricingService.setOutputFormatter(new DefaultOutputFormatter());
-
-		PricingEngine pricingEngine = new PricingEngine();
-		SimpleDataManager dataManager = new SimpleDataManager();
-		pricingEngine.setDataManager(dataManager);
-		pricingService.setPricingEngine(pricingEngine);
+		GenericGroovyApplicationContext context = new GenericGroovyApplicationContext("classpath:pricing.groovy");
+		PricingService pricingService = (PricingService) context.getBean("pricingService");
 
 		Scanner scanner = new Scanner(System.in, "UTF-8");
 		while (true) {
 			String in = scanner.next();
 			if ("exit".equalsIgnoreCase(in)) {
 				break;
-			}else{
+			} else {
 				String out = null;
 				try {
 					out = pricingService.price(in);
@@ -39,5 +26,8 @@ public class Pricing {
 				System.out.println(out);
 			}
 		}
+
+		scanner.close();
+		context.close();
 	}
 }
